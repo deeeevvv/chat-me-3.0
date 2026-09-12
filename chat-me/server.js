@@ -146,7 +146,7 @@ app.post("/api/chat", async (req, res) => {
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "google/gemma-3n-e4b-it:free",
+        model: "nvidia/nemotron-3.5-lightning:free",
         messages: [{ role: "user", content: question }],
       },
       {
@@ -224,7 +224,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.listen(PORT, () => console.log(`🚀 Chat Me running at http://localhost:${PORT}`));
+app.listen(PORT,"0.0.0.0", () => {console.log(`🚀 Chat Me running at http://localhost:${PORT}`);});
 
 function initDb() {
   db.prepare(
